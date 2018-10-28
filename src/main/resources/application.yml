@@ -1,0 +1,53 @@
+# Spring Boot configuration
+spring:
+  profiles:
+    active: production
+
+---
+
+spring:
+  profiles: production
+
+# Database
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://ec2-184-73-169-151.compute-1.amazonaws.com:5432/d9p2qpqfngj4ch
+    username: rngbryihcponnv
+    password: a9b5833a0c0a3588400b4bb6bcf3b51130e66a8047a32681b43b42f3d50c22db
+  # JPA properties
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+    generate-ddl: false
+# Server configuration
+server:
+  port: 8080
+
+---
+
+spring:
+  profiles: development
+
+  # Database
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/dbexample
+    username: example
+    password: 5strellas
+  # JPA properties
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+    generate-ddl: false
+# Server configuration
+server:
+  port: 9000
+
