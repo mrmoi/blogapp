@@ -1,9 +1,17 @@
 package com.example.blogApp;
 
+import com.example.blogApp.auth.User;
+import com.example.blogApp.auth.UsersRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.ModelMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.validation.Valid;
 
 /*
 @Controller
@@ -23,8 +31,12 @@ public class MainController {
 
     @GetMapping(value={"/", "/index"})
     public String getHomePage(Model model){
-
         return "index";
+    }
+
+    @GetMapping(value={"/home"})
+    public String getHome(Model model){
+        return "home";
     }
 
     @GetMapping(value="/login")
@@ -36,4 +48,80 @@ public class MainController {
     public String getLogoutPage(Model model){
         return "logout";
     }
+
+    @Autowired
+    private UsersRepository userRepository;
+
+/*    @GetMapping(value="/register")
+    public String getRegisterPage(Model model){
+        return "register";
+    }*/
+
+/*    @PostMapping(value="/add") // Map ONLY GET Requests
+    public @ResponseBody
+    String addNewUser (
+                      @ModelAttribute User user
+                      ,@RequestParam String firstName
+                      ,@RequestParam String lastName
+                      ,@RequestParam String email
+                      ,@RequestParam String username
+                      ,@RequestParam String password
+                      )
+        {
+
+            // @ResponseBody means the returned String is the response, not a view name
+            // @RequestParam means it is a parameter from the GET or POST request
+
+            User n = new User();
+            n.setFirstName(firstName);
+            n.setLastName(lastName);
+            n.setEmail(email);
+            n.setUsername(username);
+            n.setPassword(password);
+            userRepository.save(n);
+            return "Saved";
+        }*/
+
+
+
+        @RequestMapping(value = "/register", method = RequestMethod.GET)
+        public ModelAndView showForm() {
+            return new ModelAndView("register", "user", new User());
+        }
+
+        @RequestMapping(value = "/add", method = RequestMethod.POST)
+        public String submit(@RequestBody
+                             @Valid @ModelAttribute("user")User user,
+                             BindingResult result,
+                             ModelMap model,
+                             @RequestParam String firstName
+                            ,@RequestParam String lastName
+                            ,@RequestParam String email
+                            ,@RequestParam String username
+                            ,@RequestParam String password
+                             ) {
+            if (result.hasErrors()) {
+                return "error";
+            }
+            /*model.addAttribute("firstName", user.getFirstName());
+            model.addAttribute("lastName", user.getLastName());
+            model.addAttribute("email", user.getEmail());
+            model.addAttribute("username", user.getEmail());
+            model.addAttribute("password", user.getPassword());*/
+
+            User n = new User();
+            n.setFirstName(firstName);
+            n.setLastName(lastName);
+            n.setEmail(email);
+            n.setUsername(username);
+            n.setPassword(password);
+            userRepository.save(n);
+            return "home";
+        }
+
+        @GetMapping(path="/all")
+        public @ResponseBody Iterable<User> getAllUsers() {
+            // This returns a JSON or XML with the users
+            return userRepository.findAll();
+        }
 }
