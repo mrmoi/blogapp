@@ -1,0 +1,47 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}"lang="en">
+<head>
+    <title>Users</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+    <div class="container main-content loginbox">
+        <h3>Users</h3>
+
+<!--        <div class="card" th:each="user : ${users}">
+            <div class="card-body">
+                <span th:text="${user.id}"/>
+                <span th:text="${user.firstName}"/>
+                <span th:text="${user.lastName}"/>
+                <span th:text="${user.email}"/>
+                <span th:text="${user.username}"/>
+            </div>
+        </div>-->
+
+        <table class="table table-borderless">
+            <thead>
+            <tr>
+                <th scope="col">User ID</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Username</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${users}">
+                <td scope="col" th:text="${user.id}"/>
+                <td scope="col" th:text="${user.firstName}"/>
+                <td scope="col" th:text="${user.lastName}"/>
+                <td scope="col" th:text="${user.email}"/>
+                <td scope="col" th:text="${user.username}"/>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>

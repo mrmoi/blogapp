@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.List;
 
 /*
 @Controller
@@ -116,12 +117,42 @@ public class MainController {
             n.setUsername(username);
             n.setPassword(password);
             userRepository.save(n);
-            return "home";
+            return "index";
         }
 
-        @GetMapping(path="/all")
-        public @ResponseBody Iterable<User> getAllUsers() {
-            // This returns a JSON or XML with the users
-            return userRepository.findAll();
-        }
+/*    @GetMapping(value="/users")
+    public String getUsersPage(Model model, @ModelAttribute("user")User user){
+            model.addAttribute("users", new User());
+            model.addAttribute("firstName", user.getFirstName());
+            return "users";
+    }*/
+
+    @GetMapping(value="/users")
+    public String getUsersPage(Model model) {
+        /*List<User> list = userRepository.findAll();
+        map.addAttribute("result",list);*/
+
+        /*User user = new User();
+        map.addAttribute("user",user);
+        return "users";*/
+
+        //return "users";
+
+/*        User user = new User();
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("firstName", user.getFirstName());
+        mav.setViewName("users");
+        return mav;*/
+
+        // get all users
+        List<User> users = userRepository.findAll();
+        model.addAttribute("users", users);
+        return "users";
+    }
+
+    @GetMapping(path="/all")
+    public @ResponseBody Iterable<User> getAllUsers(){
+    // This returns a JSON or XML with the users
+    return userRepository.findAll();
+    }
 }
