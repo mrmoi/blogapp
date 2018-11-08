@@ -1,5 +1,7 @@
 package com.example.blogApp.auth;
 
+import com.example.blogApp.users.User;
+import com.example.blogApp.users.UsersRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -8,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class UsersDetailsService  implements UserDetailsService{
+public class UsersDetailsService  implements UserDetailsService {
 
     private final UsersRepository userRepository;
     private final AuthGroupRepository authGroupRepository;

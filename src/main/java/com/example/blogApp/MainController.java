@@ -1,12 +1,11 @@
 package com.example.blogApp;
 
-import com.example.blogApp.auth.User;
-import com.example.blogApp.auth.UsersRepository;
+import com.example.blogApp.users.User;
+import com.example.blogApp.users.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -87,6 +86,7 @@ public class MainController {
 
         @RequestMapping(value = "/register", method = RequestMethod.GET)
         public ModelAndView showForm() {
+
             return new ModelAndView("register", "user", new User());
         }
 

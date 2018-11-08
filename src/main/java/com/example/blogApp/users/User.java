@@ -1,4 +1,4 @@
-package com.example.blogApp.auth;
+package com.example.blogApp.users;
 
 import javax.persistence.*;
 
