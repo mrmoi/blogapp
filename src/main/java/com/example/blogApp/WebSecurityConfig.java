@@ -27,6 +27,7 @@ import java.util.List;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
+
     @Autowired
     private UsersDetailsService userDetailsService;
 
@@ -55,13 +56,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
         http
                 .csrf().disable()
                 .authorizeRequests()
+                // Specify the allowed URL's
                 .antMatchers("/","/register","/add", "/home","/index", "/css/*", "/js/*").permitAll()
+                // Any other request needs to be authenticated
                 .anyRequest().authenticated()
                 .and()
-                /*.httpBasic()*/
                 .formLogin()
                 .loginPage("/login").permitAll()
                 .and()
@@ -70,5 +73,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/logout-success").permitAll();
     }
+
+/***
+    In-memory authentication
+
+    @Bean
+    @Override
+    public UserDetailsService userDetailsService() {
+        List<UserDetails> users = new ArrayList<>();
+        users.add(User.withDefaultPasswordEncoder().username("admin").password("admin").roles("USER","ADMIN").build());
+        users.add(User.withDefaultPasswordEncoder().username("user").password("admin").roles("USER","ADMIN").build());
+        return new InMemoryUserDetailsManager(users);
+    }
+***/
 
 }
