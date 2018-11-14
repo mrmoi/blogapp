@@ -1,6 +1,9 @@
 package com.example.blogApp.users;
 
+import com.example.blogApp.auth.AuthGroup;
+import com.example.blogApp.auth.AuthGroupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -18,6 +21,9 @@ public class UserController {
     @Autowired
     private UsersRepository userRepository;
 
+    @Autowired
+    private AuthGroupRepository authGroupRepository;
+
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public ModelAndView showForm() {
 
@@ -27,6 +33,7 @@ public class UserController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String submit(@RequestBody
                          @Valid @ModelAttribute("user")User user,
+                         @ModelAttribute("authGroup")AuthGroup authGroup,
                          BindingResult result,
                          ModelMap model,
                          @RequestParam String firstName
@@ -39,17 +46,34 @@ public class UserController {
             return "error";
         }
 
+        // Create user role first
+        // Set the user's role
+        // USER or ADMIN
+        AuthGroup m = new AuthGroup();
+        m.setUsername(username);
+        m.setAuthGroup("USER");
+        authGroupRepository.save(m);
+
+        // Create the user
         User n = new User();
         n.setFirstName(firstName);
         n.setLastName(lastName);
         n.setEmail(email);
         n.setUsername(username);
         n.setPassword(password);
+
+        AuthGroup p = new AuthGroup();
+        p.getId();
+
+        n.setRoleId(p);
+
         userRepository.save(n);
         return "index";
+
     }
 
     @GetMapping(value="/users")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String getUsersPage(Model model) {
 
         // get all users

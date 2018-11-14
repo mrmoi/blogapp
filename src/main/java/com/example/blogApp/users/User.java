@@ -1,5 +1,7 @@
 package com.example.blogApp.users;
 
+import com.example.blogApp.auth.AuthGroup;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,17 +11,34 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="USER_ID")
     private long id;
+
     @Column(name="USERNAME", nullable = false, unique = true)
     private String username;
+
     @Column(name="PASSWORD")
     private String password;
+
     @Column(name="FIRSTNAME")
     private String firstName;
+
     @Column(name="LASTNAME")
     private String lastName;
+
     @Column(name="EMAIL", unique = true)
     private String email;
 
+    @ManyToOne/*(cascade = CascadeType.ALL)*/
+    @JoinColumn(name="ROLE_ID")
+    private AuthGroup roleId;
+
+/*    User() {
+        // default constructor
+    }
+
+    public User(AuthGroup roleId) {
+        roleId.toString();
+        return Long.valueOf(roleId);
+    }*/
 
     public long getId() {
         return id;
@@ -67,5 +86,13 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public AuthGroup getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(AuthGroup roleId) {
+        this.roleId = roleId;
     }
 }
