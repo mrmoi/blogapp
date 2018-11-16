@@ -46,9 +46,7 @@ public class UserController {
             return "error";
         }
 
-        // Create user role first
-        // Set the user's role
-        // USER or ADMIN
+        // Create the user's role
         AuthGroup m = new AuthGroup();
         m.setUsername(username);
         m.setAuthGroup("USER");
@@ -62,12 +60,8 @@ public class UserController {
         n.setUsername(username);
         n.setPassword(password);
 
-        AuthGroup p = new AuthGroup();
-        p.getId();
-
-        n.setRoleId(p);
-
         userRepository.save(n);
+
         return "index";
 
     }

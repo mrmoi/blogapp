@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Table(name="USERS")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="USER_ID")
     private long id;
 
@@ -27,18 +27,22 @@ public class User {
     @Column(name="EMAIL", unique = true)
     private String email;
 
-    @ManyToOne/*(cascade = CascadeType.ALL)*/
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="ROLE_ID")
     private AuthGroup roleId;
 
-/*    User() {
+    User() {
         // default constructor
     }
 
-    public User(AuthGroup roleId) {
-        roleId.toString();
-        return Long.valueOf(roleId);
-    }*/
+    public User(String username, String password, String firstName, String lastName, String email, AuthGroup roleId) {
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.roleId = roleId;
+    }
 
     public long getId() {
         return id;
@@ -94,5 +98,12 @@ public class User {
 
     public void setRoleId(AuthGroup roleId) {
         this.roleId = roleId;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "roleId=" + roleId +
+                '}';
     }
 }
