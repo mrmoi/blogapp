@@ -59,7 +59,7 @@ public class UserController {
         n.setEmail(email);
         n.setUsername(username);
         n.setPassword(password);
-
+        m.addUser(n);
         userRepository.save(n);
 
         return "index";

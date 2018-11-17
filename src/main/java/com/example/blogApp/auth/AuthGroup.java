@@ -14,11 +14,6 @@ public class AuthGroup {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-/*    @Id
-    @Column(name="USER_ROLE_ID")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private AuthGroup userRoleId;*/
-
     @Column(name="USERNAME")
     private String username;
 
@@ -30,20 +25,6 @@ public class AuthGroup {
                cascade = CascadeType.ALL,
                orphanRemoval = true)
     private List<User> users = new ArrayList<>();
-
-/*    public AuthGroup(String username, String authGroup, List<User> users) {
-        this.username = username;
-        this.authGroup = authGroup;
-        this.users = users;
-    }*/
-
-    public AuthGroup() {
-
-    }
-
-    public AuthGroup(String authGroup) {
-        this.authGroup = authGroup;
-    }
 
     public long getId() {
         return id;
@@ -69,14 +50,6 @@ public class AuthGroup {
         this.authGroup = authGroup;
     }
 
-/*    public AuthGroup getUserRoleId() {
-        return userRoleId;
-    }
-
-    public void setUserRoleId(AuthGroup userRoleId) {
-        this.userRoleId = userRoleId;
-    }*/
-
     public List<User> getUsers() {
         return users;
     }
@@ -85,13 +58,13 @@ public class AuthGroup {
         this.users = users;
     }
 
-    public void addRole(User user) {
+    public void addUser(User user) {
         users.add(user);
         user.setRoleId(this);
     }
 
-/*    public void removeComment(PostComment comment) {
-        comments.remove(comment);
-        comment.setPost(null);
-    }*/
+    public void deleteUser(User user) {
+        users.remove(user);
+        user.setRoleId(null);
+    }
 }

@@ -2,6 +2,7 @@ package com.example.blogApp.users;
 
 import com.example.blogApp.auth.AuthGroup;
 
+import javax.jws.soap.SOAPBinding;
 import javax.persistence.*;
 
 @Entity
@@ -98,6 +99,17 @@ public class User {
 
     public void setRoleId(AuthGroup roleId) {
         this.roleId = roleId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        return roleId != null && roleId.equals(((User) o).id);
+    }
+    @Override
+    public int hashCode() {
+        return 31;
     }
 
     @Override
