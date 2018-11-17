@@ -47,9 +47,19 @@
                 </div>
             </div>
 
+            <ul class="alert alert-danger" th:if="${#fields.hasErrors('*')}">
+                <li th:each="err : ${#fields.errors('*')}" th:text="${err}">Input is incorrect</li>
+            </ul>
+
+            <ul class="alert alert-danger" th:if="${#fields.hasErrors('*')}">
+                <li th:errors="*{firstName}">First Name Error></li>
+            </ul>
+
+            <p class="alert alert-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First Name Error</p>
+
             <div class="form-group row">
                 <div class="col-sm-2">
-                    <button type="submit" class="btn btn-primary">Sign in</button>
+                    <button type="submit" class="btn btn-primary">Register</button>
                 </div>
             </div>
         </form>

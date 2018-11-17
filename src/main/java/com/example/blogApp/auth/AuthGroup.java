@@ -3,6 +3,7 @@ package com.example.blogApp.auth;
 import com.example.blogApp.users.User;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +15,8 @@ public class AuthGroup {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name="USERNAME")
+    @Size(min=5, max=30)
+    @Column(name="USERNAME", nullable = false, unique = true)
     private String username;
 
     @Column(name="AUTH_GROUP")

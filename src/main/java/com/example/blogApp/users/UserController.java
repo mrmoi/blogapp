@@ -33,37 +33,38 @@ public class UserController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String submit(@RequestBody
                          @Valid @ModelAttribute("user")User user,
-                         @ModelAttribute("authGroup")AuthGroup authGroup,
                          BindingResult result,
+                         @ModelAttribute("authGroup")AuthGroup authGroup,
                          ModelMap model,
-                         @RequestParam String firstName
+             @RequestParam String firstName
             ,@RequestParam String lastName
             ,@RequestParam String email
             ,@RequestParam String username
             ,@RequestParam String password
     ) {
         if (result.hasErrors()) {
-            return "error";
+            return "register";
+        } else {
+
+            // Create the user's role
+            AuthGroup m = new AuthGroup();
+            m.setUsername(username);
+            m.setAuthGroup("USER");
+            authGroupRepository.save(m);
+
+            // Create the user
+            User n = new User();
+            n.setFirstName(firstName);
+            n.setLastName(lastName);
+            n.setEmail(email);
+            n.setUsername(username);
+            n.setPassword(password);
+            m.addUser(n);
+            userRepository.save(n);
+
+            return "index";
+            // Add message when user has successfully been registered.
         }
-
-        // Create the user's role
-        AuthGroup m = new AuthGroup();
-        m.setUsername(username);
-        m.setAuthGroup("USER");
-        authGroupRepository.save(m);
-
-        // Create the user
-        User n = new User();
-        n.setFirstName(firstName);
-        n.setLastName(lastName);
-        n.setEmail(email);
-        n.setUsername(username);
-        n.setPassword(password);
-        m.addUser(n);
-        userRepository.save(n);
-
-        return "index";
-
     }
 
     @GetMapping(value="/users")

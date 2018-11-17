@@ -4,6 +4,7 @@ import com.example.blogApp.auth.AuthGroup;
 
 import javax.jws.soap.SOAPBinding;
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="USERS")
@@ -13,18 +14,23 @@ public class User {
     @Column(name="USER_ID")
     private long id;
 
+    @Size(min=5, max=30)
     @Column(name="USERNAME", nullable = false, unique = true)
     private String username;
 
+    @Size(min=5, max=30)
     @Column(name="PASSWORD")
     private String password;
 
+    @Size(min=5, max=30)
     @Column(name="FIRSTNAME")
     private String firstName;
 
+    @Size(min=5, max=30)
     @Column(name="LASTNAME")
     private String lastName;
 
+    @Size(min=5, max=30)
     @Column(name="EMAIL", unique = true)
     private String email;
 
