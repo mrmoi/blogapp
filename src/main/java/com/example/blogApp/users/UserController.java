@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/")
@@ -49,7 +51,7 @@ public class UserController {
             // Create the user's role
             AuthGroup m = new AuthGroup();
             m.setUsername(username);
-            m.setAuthGroup("USER");
+            m.setAuthGroup("ADMIN");
             authGroupRepository.save(m);
 
             // Create the user
@@ -73,7 +75,12 @@ public class UserController {
 
         // get all users
         List<User> users = userRepository.findAll();
+        List<AuthGroup> authGroups = authGroupRepository.findAll();
         model.addAttribute("users", users);
+        model.addAttribute("authGroups", authGroups);
         return "users";
+
+        // return new ModelAndView("welcomePage", "model", model);
+
     }
 }

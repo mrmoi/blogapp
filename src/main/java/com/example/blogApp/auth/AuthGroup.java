@@ -3,10 +3,12 @@ package com.example.blogApp.auth;
 import com.example.blogApp.users.User;
 
 import javax.persistence.*;
+import javax.transaction.Transactional;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
+@Transactional
 @Entity
 @Table(name="USER_ROLE")
 public class AuthGroup {
@@ -69,4 +71,6 @@ public class AuthGroup {
         users.remove(user);
         user.setRoleId(null);
     }
+
+
 }

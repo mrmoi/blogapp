@@ -4,8 +4,10 @@ import com.example.blogApp.auth.AuthGroup;
 
 import javax.jws.soap.SOAPBinding;
 import javax.persistence.*;
+import javax.transaction.Transactional;
 import javax.validation.constraints.Size;
 
+@Transactional
 @Entity
 @Table(name="USERS")
 public class User {
@@ -14,27 +16,27 @@ public class User {
     @Column(name="USER_ID")
     private long id;
 
-    @Size(min=5, max=30)
+    @Size(min=5, max=30, message = "username has to be between 5 and 30 characters")
     @Column(name="USERNAME", nullable = false, unique = true)
     private String username;
 
-    @Size(min=5, max=30)
+    @Size(min=5, max=30, message = "password has to be between 5 and 30 characters")
     @Column(name="PASSWORD")
     private String password;
 
-    @Size(min=5, max=30)
+    @Size(min=5, max=30, message = "first name has to be between 5 and 30 characters")
     @Column(name="FIRSTNAME")
     private String firstName;
 
-    @Size(min=5, max=30)
+    @Size(min=5, max=30, message = "last name has to be between 5 and 30 characters")
     @Column(name="LASTNAME")
     private String lastName;
 
-    @Size(min=5, max=30)
+    @Size(min=5, max=30, message = "email has to be between 5 and 30 characters")
     @Column(name="EMAIL", unique = true)
     private String email;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="ROLE_ID")
     private AuthGroup roleId;
 
