@@ -2,7 +2,6 @@ package com.example.blogApp.users;
 
 import com.example.blogApp.auth.AuthGroup;
 
-import javax.jws.soap.SOAPBinding;
 import javax.persistence.*;
 import javax.transaction.Transactional;
 import javax.validation.constraints.Size;

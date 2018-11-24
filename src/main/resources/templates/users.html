@@ -6,31 +6,51 @@
 <body>
 
 <div layout:fragment="content">
+
     <div class="container main-content loginbox">
         <h3>Users</h3>
 
-        <table class="table table-borderless">
-            <thead>
-            <tr>
-                <th scope="col">User ID</th>
-                <th scope="col">First Name</th>
-                <th scope="col">Last Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Username</th>
-                <th scope="col">Role</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="user : ${users}">
-                <td scope="col" th:text="${user.id}"/>
-                <td scope="col" th:text="${user.firstName}"/>
-                <td scope="col" th:text="${user.lastName}"/>
-                <td scope="col" th:text="${user.email}"/>
-                <td scope="col" th:text="${user.username}"/>
-                <td scope="col" th:text="${user.roleId}"/>
-            </tr>
-            </tbody>
-        </table>
+    <table>
+        <tr>
+            <td>
+                <table class="table table-borderless">
+                    <thead>
+                    <tr>
+                        <th scope="col">User ID</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Username</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="user : ${users}">
+                        <td scope="col" th:text="${user.id}"/>
+                        <td scope="col" th:text="${user.firstName}"/>
+                        <td scope="col" th:text="${user.lastName}"/>
+                        <td scope="col" th:text="${user.email}"/>
+                        <td scope="col" th:text="${user.username}"/>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+            <td>
+                <table class="table table-borderless">
+                    <thead>
+                    <tr>
+                        <th scope="col">Auth Group</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="authGroup : ${authGroups}">
+                        <td scope="col" th:text="${authGroup.authGroup}"/>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+
+    </table>
 
     </div>
 </div>
