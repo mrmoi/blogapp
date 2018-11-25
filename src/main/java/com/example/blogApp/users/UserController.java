@@ -17,6 +17,11 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
+public class UserController {
+
+}
+
+/*@Controller
 @RequestMapping("/")
 public class UserController {
 
@@ -48,6 +53,8 @@ public class UserController {
             return "register";
         } else {
 
+            ModelAndView modelAndView = new ModelAndView();
+
             // Create the user's role
             AuthGroup m = new AuthGroup();
             m.setUsername(username);
@@ -63,6 +70,8 @@ public class UserController {
             n.setPassword(password);
             m.addUser(n);
             userRepository.save(n);
+
+            modelAndView.addObject("successMessage", "User has been registered successfully.");
 
             return "index";
             // Add message when user has successfully been registered.
@@ -83,4 +92,4 @@ public class UserController {
         // return new ModelAndView("welcomePage", "model", model);
 
     }
-}
+}*/
