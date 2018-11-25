@@ -19,7 +19,7 @@ public class User {
     @Column(name="USERNAME", nullable = false, unique = true)
     private String username;
 
-    @Size(min=5, max=30, message = "password has to be between 5 and 30 characters")
+    /*@Size(min=5, max=30, message = "password has to be between 5 and 30 characters")*/
     @Column(name="PASSWORD")
     private String password;
 

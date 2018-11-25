@@ -61,7 +61,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                 .csrf().disable()
                 .authorizeRequests()
                 // Specify the allowed URL's
-                .antMatchers("/","/register","/add", "/home","/index", "/css/*", "/js/*").permitAll()
+                .antMatchers("/","/register","/home","/index", "/css/*", "/js/*").permitAll()
                 // Any other request needs to be authenticated
                 .anyRequest().authenticated()
                 .and()

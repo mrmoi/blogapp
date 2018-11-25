@@ -2,6 +2,7 @@ package com.example.blogApp.users;
 
 import com.example.blogApp.auth.AuthGroup;
 import com.example.blogApp.auth.AuthGroupRepository;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,40 @@ import java.util.Map;
 
 @Controller
 public class UserController {
+
+    @Autowired
+    private UserService userService;
+
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public ModelAndView registration() {
+        ModelAndView modelAndView = new ModelAndView();
+        User user = new User();
+        modelAndView.addObject("user", user);
+        modelAndView.setViewName("register");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public ModelAndView createNewUser(@Valid User user,
+                                      BindingResult bindingResult) {
+        ModelAndView modelAndView = new ModelAndView();
+        User userExists = userService.findUserByEmail(user.getEmail());
+        if (userExists != null) {
+            bindingResult
+                    .rejectValue("email", "error.user",
+                            "There is already a user registered with the email provided");
+        }
+        if (bindingResult.hasErrors()) {
+            modelAndView.setViewName("registration");
+        } else {
+            System.out.println("Trying to save the new user");
+            userService.saveUser(user);
+            modelAndView.addObject("successMessage", "User has been registered successfully");
+            modelAndView.addObject("user", new User());
+            modelAndView.setViewName("register");
+        }
+        return modelAndView;
+    }
 
 }
 
