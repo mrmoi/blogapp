@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
 @Service
 public class UserService {
@@ -31,24 +32,27 @@ public class UserService {
         return usersRepository.findByEmail(email);
     }
 
-    public void saveUser(User user) {
+    public void saveUser(User user, AuthGroup authGroup) {
+        authGroup.setUsername(user.getUsername());
+        authGroup.setAuthGroup("ADMIN");
+        authGroupRepository.save(authGroup);
+
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setUsername(user.getUsername());
         user.setFirstName(user.getFirstName());
         user.setLastName(user.getLastName());
         user.setEmail(user.getEmail());
+        authGroup.addUser(user);
         usersRepository.save(user);
+    }
+
+    public List findAllUsers() {
+
+        List<User> users = usersRepository.findAll();
+        //List<AuthGroup> authGroups = authGroupRepository.findAll();
+        //model.addAttribute("users", users);
+        //model.addAttribute("authGroups", authGroups);
+        return users;
     }
 }
 
-
-/*
-
-    User n = new User();
-            n.setFirstName(firstName);
-                    n.setLastName(lastName);
-                    n.setEmail(email);
-                    n.setUsername(username);
-                    n.setPassword(password);
-                    m.addUser(n);
-                    userRepository.save(n);*/

@@ -23,6 +23,11 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    /* *
+    * ModelAndView returns both model and view in a single return value.
+    * Add the "User" object to the model.
+    * Set the "register" view name for the ModelAndView.
+    * */
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public ModelAndView registration() {
         ModelAndView modelAndView = new ModelAndView();
@@ -32,8 +37,12 @@ public class UserController {
         return modelAndView;
     }
 
+    /*
+    *
+    * */
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public ModelAndView createNewUser(@Valid User user,
+                                      @Valid AuthGroup authGroup,
                                       BindingResult bindingResult) {
         ModelAndView modelAndView = new ModelAndView();
         User userExists = userService.findUserByEmail(user.getEmail());
@@ -46,12 +55,20 @@ public class UserController {
             modelAndView.setViewName("registration");
         } else {
             System.out.println("Trying to save the new user");
-            userService.saveUser(user);
+            userService.saveUser(user, authGroup);
             modelAndView.addObject("successMessage", "User has been registered successfully");
             modelAndView.addObject("user", new User());
             modelAndView.setViewName("register");
         }
         return modelAndView;
+    }
+
+    @GetMapping(value="/users")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public String getUsersPage(Model model) {
+
+        return "users";
+        // return new ModelAndView("welcomePage", "model", model);
     }
 
 }

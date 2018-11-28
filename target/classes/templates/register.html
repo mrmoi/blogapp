@@ -57,7 +57,7 @@
                     <button type="submit" class="btn btn-primary">Register</button>
                 </div>
 
-                <span th:utext="${successMessage}"></span>
+                <span class="alert alert-success" th:if="${successMessage != null}" th:utext="${successMessage}"></span>
             </div>
         </form>
     </div>
