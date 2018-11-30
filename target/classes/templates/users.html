@@ -9,7 +9,7 @@
 
     <div class="container main-content loginbox">
         <h3>Users</h3>
-
+        <!--<p class="float-right" th:utext="${adminMessage}"></p>-->
     <table>
         <tr>
             <td>
@@ -38,11 +38,11 @@
                 <table class="table table-borderless">
                     <thead>
                     <tr>
-                        <th scope="col">Auth Group</th>
+                        <th scope="col">Role</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="authGroup : ${authGroups}">
+                    <tr th:each="authGroup : ${allAuthGroups}">
                         <td scope="col" th:text="${authGroup.authGroup}"/>
                     </tr>
                     </tbody>
@@ -51,9 +51,6 @@
         </tr>
 
     </table>
-
-        <p th:utext="${adminMessage}"></p>
-        <p th:utext="${firstName}"></p>
 
     </div>
 </div>

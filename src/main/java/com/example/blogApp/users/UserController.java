@@ -5,6 +5,8 @@ import com.example.blogApp.auth.AuthGroupRepository;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -64,90 +66,24 @@ public class UserController {
         return modelAndView;
     }
 
+    /*
+    * Only administrators have access to view all users.
+    * Display all users and their respective auth levels.
+    * */
     @GetMapping(value="/users")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ModelAndView getUsers() {
-        User user = new User();
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("firstName", "Welcome" + user.getFirstName());
-        modelAndView.addObject("adminMessage", "Welcome Administrator");
+        //Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        //User user = userService.findUserByEmail(auth.getName());
+        //modelAndView.addObject("adminMessage", "Welcome" + user.getFirstName());
+        //System.out.println(user.getUsername());
         modelAndView.addObject("allUsers", userService.findAllUsers());
+        modelAndView.addObject("allAuthGroups", userService.findAllAuthGroups());
         modelAndView.setViewName("users");
         return modelAndView;
-        // return new ModelAndView("welcomePage", "model", model);
     }
 
 }
 
-/*@Controller
-@RequestMapping("/")
-public class UserController {
 
-    @Autowired
-    private UsersRepository userRepository;
-
-    @Autowired
-    private AuthGroupRepository authGroupRepository;
-
-    @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public ModelAndView showForm() {
-
-        return new ModelAndView("register", "user", new User());
-    }
-
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String submit(@RequestBody
-                         @Valid @ModelAttribute("user")User user,
-                         BindingResult result,
-                         @ModelAttribute("authGroup")AuthGroup authGroup,
-                         ModelMap model,
-             @RequestParam String firstName
-            ,@RequestParam String lastName
-            ,@RequestParam String email
-            ,@RequestParam String username
-            ,@RequestParam String password
-    ) {
-        if (result.hasErrors()) {
-            return "register";
-        } else {
-
-            ModelAndView modelAndView = new ModelAndView();
-
-            // Create the user's role
-            AuthGroup m = new AuthGroup();
-            m.setUsername(username);
-            m.setAuthGroup("ADMIN");
-            authGroupRepository.save(m);
-
-            // Create the user
-            User n = new User();
-            n.setFirstName(firstName);
-            n.setLastName(lastName);
-            n.setEmail(email);
-            n.setUsername(username);
-            n.setPassword(password);
-            m.addUser(n);
-            userRepository.save(n);
-
-            modelAndView.addObject("successMessage", "User has been registered successfully.");
-
-            return "index";
-            // Add message when user has successfully been registered.
-        }
-    }
-
-    @GetMapping(value="/users")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public String getUsersPage(Model model) {
-
-        // get all users
-        List<User> users = userRepository.findAll();
-        List<AuthGroup> authGroups = authGroupRepository.findAll();
-        model.addAttribute("users", users);
-        model.addAttribute("authGroups", authGroups);
-        return "users";
-
-        // return new ModelAndView("welcomePage", "model", model);
-
-    }
-}*/

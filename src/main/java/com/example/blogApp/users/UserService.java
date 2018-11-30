@@ -50,12 +50,13 @@ public class UserService {
     }
 
     public List findAllUsers() {
-
         List<User> users = usersRepository.findAll();
-        //List<AuthGroup> authGroups = authGroupRepository.findAll();
-        //model.addAttribute("users", users);
-        //model.addAttribute("authGroups", authGroups);
         return users;
+    }
+
+    public List findAllAuthGroups() {
+        List<AuthGroup> authGroups = authGroupRepository.findAll();
+        return authGroups;
     }
 }
 
