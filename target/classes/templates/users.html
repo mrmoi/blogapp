@@ -24,7 +24,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="user : ${users}">
+                    <tr th:each="user : ${allUsers}">
                         <td scope="col" th:text="${user.id}"/>
                         <td scope="col" th:text="${user.firstName}"/>
                         <td scope="col" th:text="${user.lastName}"/>
@@ -51,6 +51,9 @@
         </tr>
 
     </table>
+
+        <p th:utext="${adminMessage}"></p>
+        <p th:utext="${firstName}"></p>
 
     </div>
 </div>

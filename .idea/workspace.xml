@@ -3,10 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="838b896c-cdf6-4a7a-a800-86f10689c086" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/blogApp/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/blogApp/WebSecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/blogApp/users/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/blogApp/users/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/blogApp/users/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/blogApp/users/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/users.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/users.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/blogApp/users/UserController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/blogApp/users/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/blogApp/users/UserService.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,8 +38,8 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="css" value="3" />
-          <entry key="html" value="73" />
-          <entry key="java" value="119" />
+          <entry key="html" value="75" />
+          <entry key="java" value="120" />
           <entry key="properties" value="1" />
           <entry key="xml" value="6" />
           <entry key="yml" value="16" />
@@ -47,8 +48,8 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="3" />
-          <entry key="HTML" value="73" />
-          <entry key="JAVA" value="119" />
+          <entry key="HTML" value="75" />
+          <entry key="JAVA" value="120" />
           <entry key="Properties" value="1" />
           <entry key="XML" value="6" />
           <entry key="YAML" value="16" />
@@ -57,8 +58,8 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="234" />
-          <entry key="html" value="2215" />
-          <entry key="java" value="9349" />
+          <entry key="html" value="2271" />
+          <entry key="java" value="9844" />
           <entry key="properties" value="47" />
           <entry key="xml" value="2" />
           <entry key="yml" value="497" />
@@ -67,8 +68,8 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="234" />
-          <entry key="HTML" value="2215" />
-          <entry key="JAVA" value="9349" />
+          <entry key="HTML" value="2271" />
+          <entry key="JAVA" value="9844" />
           <entry key="Properties" value="47" />
           <entry key="XML" value="2" />
           <entry key="YAML" value="497" />
@@ -78,30 +79,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/blogApp/users/User.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/users.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8">
-              <caret line="39" column="29" lean-forward="true" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="29" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#equals#0;class#User#0" />
-                <element signature="method#toString#0;class#User#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/blogApp/auth/AuthGroup.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="17" column="20" lean-forward="true" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#950#951#0" expanded="true" />
-                <element signature="e#981#982#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="298">
+              <caret line="26" column="53" lean-forward="true" selection-start-line="26" selection-start-column="53" selection-end-line="26" selection-end-column="53" />
             </state>
           </provider>
         </entry>
@@ -109,8 +91,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/blogApp/users/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2320">
-              <caret line="122" column="25" lean-forward="true" selection-start-line="122" selection-start-column="25" selection-end-line="122" selection-end-column="25" />
+            <state relative-caret-position="880">
+              <caret line="73" column="40" selection-start-line="73" selection-start-column="32" selection-end-line="73" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -118,15 +100,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/blogApp/users/UserService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="766">
-              <caret line="39" column="75" lean-forward="true" selection-start-line="39" selection-start-column="75" selection-end-line="39" selection-end-column="75" />
+            <state relative-caret-position="955">
+              <caret line="53" column="53" lean-forward="true" selection-start-line="53" selection-start-column="53" selection-end-line="53" selection-end-column="53" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#822#823#0" expanded="true" />
-                <element signature="e#859#860#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -183,14 +163,14 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/error.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/blogApp/auth/AuthGroup.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/css/styles.css" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/users.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/blogApp/WebMvcConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/blogApp/users/UsersRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/blogApp/users/User.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/register.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/blogApp/WebSecurityConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/blogApp/users/UserController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/blogApp/users/UserService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/blogApp/users/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/users.html" />
       </list>
     </option>
   </component>
@@ -208,9 +188,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="198" />
+    <option name="y" value="22" />
     <option name="width" value="1080" />
-    <option name="height" value="1501" />
+    <option name="height" value="1842" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -317,7 +297,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543384373011" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543556876911" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -325,7 +305,7 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -368,12 +348,12 @@
       <workItem from="1542723811458" duration="4046000" />
       <workItem from="1543099319653" duration="350000" />
       <workItem from="1543100573608" duration="2223000" />
-      <workItem from="1543104934915" duration="10637000" />
+      <workItem from="1543104934915" duration="16469000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="143667000" />
+    <option name="totallyTimeSpent" value="149499000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -396,7 +376,7 @@
       <window_info id="Designer" order="5" />
       <window_info content_ui="combo" id="Project" order="6" weight="0.24084778" />
       <window_info id="Structure" order="7" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="0" weight="0.25408092" />
+      <window_info anchor="bottom" id="Terminal" order="0" weight="0.2537143" />
       <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="2" weight="0.3284553" />
       <window_info anchor="bottom" id="Java Enterprise" order="3" weight="0.3284553" />
@@ -603,13 +583,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/users.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="736">
-          <caret line="32" column="25" lean-forward="true" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/blogApp/users/UsersRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
@@ -671,27 +644,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/register.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="919">
-          <caret line="59" column="120" selection-start-line="59" selection-start-column="120" selection-end-line="59" selection-end-column="120" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/blogApp/users/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2320">
-          <caret line="122" column="25" lean-forward="true" selection-start-line="122" selection-start-column="25" selection-end-line="122" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/blogApp/auth/AuthGroup.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
-          <caret line="17" column="20" lean-forward="true" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+          <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#950#951#0" expanded="true" />
@@ -703,7 +659,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/blogApp/users/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="8">
-          <caret line="39" column="29" lean-forward="true" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="29" />
+          <caret line="39" column="29" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#equals#0;class#User#0" />
@@ -712,15 +668,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/register.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="942">
+          <caret line="59" column="112" selection-start-line="59" selection-start-column="84" selection-end-line="59" selection-end-column="112" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/blogApp/users/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="766">
-          <caret line="39" column="75" lean-forward="true" selection-start-line="39" selection-start-column="75" selection-end-line="39" selection-end-column="75" />
+        <state relative-caret-position="955">
+          <caret line="53" column="53" lean-forward="true" selection-start-line="53" selection-start-column="53" selection-end-line="53" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#822#823#0" expanded="true" />
-            <element signature="e#859#860#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/blogApp/users/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="880">
+          <caret line="73" column="40" selection-start-line="73" selection-start-column="32" selection-end-line="73" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/users.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="26" column="53" lean-forward="true" selection-start-line="26" selection-start-column="53" selection-end-line="26" selection-end-column="53" />
         </state>
       </provider>
     </entry>

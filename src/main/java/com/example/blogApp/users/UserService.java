@@ -33,6 +33,9 @@ public class UserService {
     }
 
     public void saveUser(User user, AuthGroup authGroup) {
+        /*
+        * For now, every user will be assigned the "ADMIN"
+        * */
         authGroup.setUsername(user.getUsername());
         authGroup.setAuthGroup("ADMIN");
         authGroupRepository.save(authGroup);

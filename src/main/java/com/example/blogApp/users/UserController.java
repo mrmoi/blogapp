@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -65,9 +66,14 @@ public class UserController {
 
     @GetMapping(value="/users")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public String getUsersPage(Model model) {
-
-        return "users";
+    public ModelAndView getUsers() {
+        User user = new User();
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("firstName", "Welcome" + user.getFirstName());
+        modelAndView.addObject("adminMessage", "Welcome Administrator");
+        modelAndView.addObject("allUsers", userService.findAllUsers());
+        modelAndView.setViewName("users");
+        return modelAndView;
         // return new ModelAndView("welcomePage", "model", model);
     }
 
